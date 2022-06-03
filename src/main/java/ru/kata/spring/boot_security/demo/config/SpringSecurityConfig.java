@@ -1,7 +1,7 @@
-package com.example.springbootcrud.config;
+package ru.kata.spring.boot_security.demo.config;
 
-import com.example.springbootcrud.config.handler.LoginSuccessHandler;
-import com.example.springbootcrud.service.UserDetailServiceImpl;
+import ru.kata.spring.boot_security.demo.config.handler.LoginSuccessHandler;
+import ru.kata.spring.boot_security.demo.service.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

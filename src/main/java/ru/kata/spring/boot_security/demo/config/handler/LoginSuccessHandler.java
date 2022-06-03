@@ -1,6 +1,6 @@
-package com.example.springbootcrud.config.handler;
+package ru.kata.spring.boot_security.demo.config.handler;
 
-import com.example.springbootcrud.model.User;
+import ru.kata.spring.boot_security.demo.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;

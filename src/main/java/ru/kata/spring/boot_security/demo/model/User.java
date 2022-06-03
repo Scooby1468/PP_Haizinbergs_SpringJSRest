@@ -1,4 +1,4 @@
-package com.example.springbootcrud.model;
+package ru.kata.spring.boot_security.demo.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +24,7 @@ public class User implements UserDetails {
 	@Column
 	private String username;
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roleSet;
 	

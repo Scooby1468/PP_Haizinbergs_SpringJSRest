@@ -1,4 +1,4 @@
-package com.example.springbootcrud.model;
+package ru.kata.spring.boot_security.demo.model;
 
 import org.springframework.security.core.GrantedAuthority;
 

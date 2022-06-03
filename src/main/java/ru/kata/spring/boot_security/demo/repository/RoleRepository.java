@@ -1,6 +1,6 @@
-package com.example.springbootcrud.repository;
+package ru.kata.spring.boot_security.demo.repository;
 
-import com.example.springbootcrud.model.Role;
+import ru.kata.spring.boot_security.demo.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

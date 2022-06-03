@@ -1,7 +1,7 @@
-package com.example.springbootcrud.service;
+package ru.kata.spring.boot_security.demo.service;
 
-import com.example.springbootcrud.model.Role;
-import com.example.springbootcrud.repository.RoleRepository;
+import ru.kata.spring.boot_security.demo.model.Role;
+import ru.kata.spring.boot_security.demo.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

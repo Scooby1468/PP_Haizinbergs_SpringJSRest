@@ -1,7 +1,7 @@
-package com.example.springbootcrud.service;
+package ru.kata.spring.boot_security.demo.service;
 
-import com.example.springbootcrud.model.User;
-import com.example.springbootcrud.repository.UserRepository;
+import ru.kata.spring.boot_security.demo.model.User;
+import ru.kata.spring.boot_security.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
