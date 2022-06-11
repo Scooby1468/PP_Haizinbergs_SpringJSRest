@@ -1,7 +1,8 @@
-package ru.kata.spring.boot_security.demo.config;
+package com.example.springbootcrud.config;
 
-import ru.kata.spring.boot_security.demo.config.handler.LoginSuccessHandler;
-import ru.kata.spring.boot_security.demo.service.UserDetailServiceImpl;
+
+import com.example.springbootcrud.config.handler.LoginSuccessHandler;
+import com.example.springbootcrud.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,21 +14,22 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+
 @Configuration
 @EnableWebSecurity
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Autowired
-	private UserDetailServiceImpl userDetailsServiceImp;
-	
+	private UserDetailsServiceImpl userDetailsServiceImp;
+
 	@Autowired
 	private LoginSuccessHandler loginSuccessHandler;
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsServiceImp);
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.formLogin()
@@ -37,7 +39,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.usernameParameter("email")
 				.passwordParameter("password")
 				.permitAll();
-		
+
 		http.logout()
 				// разрешаем делать логаут всем
 				.permitAll()
@@ -46,9 +48,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				// указываем URL при удачном логауте
 				.logoutSuccessUrl("/login")
 				.and().csrf().disable();
-		
+
 		http
-				// делаем страницу регистрации недоступной для авторизированных пользователей
 				.authorizeRequests()
 				//страницы аутентификаци доступна всем
 				.antMatchers("/login").anonymous()
@@ -56,7 +57,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				// защищенные URL
 				.antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN')").anyRequest().authenticated();
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5 ">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,12 +9,12 @@
     <!-- Bootstrap CSS -->
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+    <script type="text/javascript" src="/static/crud.js"></script>
     <title>User info</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark pb-2 bg-dark">
     <div class="col-11 pr-1 mr-2">
-        <span class="navbar-brand mr-0" sec:authentication="name"></span>
         <span class="navbar-text text-light">with roles: </span>
         <span class="navbar-text text-lg-right text-light" th:each="authority : ${#authentication.getAuthorities()}"
               th:text="${authority.getAuthority()}"></span>
@@ -22,11 +23,11 @@
         <a class="text-secondary" th:href="@{/logout}">Logout</a>
     </div>
 </nav>
-<div class="container-fluid p-0">
+<div class="container-fluid">
     <div class="row flex-row">
         <div class="col-3">
             <!-- List group -->
-            <div class="list-group" id="myList" role="tablist">
+            <div class="list-group list-group-flush" id="myUserList" role="tablist">
                 <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile"
                    role="tab">User</a>
             </div>
@@ -44,7 +45,7 @@
                         <div class="card ">
                             <div class="card-header">
                                 <div class="text-xl-left">
-                                    <h5>About user</h5>
+                                    <h5>About user <span th:text="${username}" ></span></h5>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -59,9 +60,10 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td th:text="${authUser.id}"></td>
+                                        <td th:text="${authUser.id}">Id</td>
                                         <td th:text="${authUser.email}"></td>
                                         <td th:text="${authUser.username}"></td>
+                                        <td th:text="${authUser.password}"></td>
                                         <td class="list-group list-group-horizontal">
                                             <span class="mr-2" th:each="role: ${authUser.roleSet}"
                                                   th:text="${role.name}"></span>

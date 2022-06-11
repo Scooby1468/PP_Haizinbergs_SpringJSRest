@@ -1,4 +1,4 @@
-package ru.kata.spring.boot_security.demo;
+package com.example.springbootcrud;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

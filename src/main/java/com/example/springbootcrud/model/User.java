@@ -1,4 +1,4 @@
-package ru.kata.spring.boot_security.demo.model;
+package com.example.springbootcrud.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +24,7 @@ public class User implements UserDetails {
 	@Column
 	private String username;
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roleSet;
 	
@@ -75,12 +75,7 @@ public class User implements UserDetails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return getRoleSet();
-	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -95,6 +90,11 @@ public class User implements UserDetails {
 	
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return getRoleSet();
 	}
 	
 	@Override
